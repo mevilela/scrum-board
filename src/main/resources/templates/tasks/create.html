@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>New Task</h1>
+    <form th:action="@{/tasks/create}" th:object="${task}" method="post">
+        <p>
+            Name: <input type="text" th:field="*{name}" />
+        </p>
+<!--        <p>-->
+<!--            Assingee: <input type="text" th:field="*{assingee}" />-->
+<!--        </p>-->
+        <p>
+            Assingee:
+            <select id="assignee" th:field="*{assignee}">
+                <option th:each="user : ${users}"
+                        th:value="${user.id}"
+                        th:text="${user.username}">
+                </option>
+            </select>
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+</body>
+</html>
